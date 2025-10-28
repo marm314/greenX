@@ -24,7 +24,7 @@ program gx_tabulate_minimax
     character(len=1024) :: msg, arg, arg_val, iomsg, command
     logical :: do_plot = .False.
     !arrays
-    real(dp) :: max_errors(3)
+    real(dp) :: max_errors(4)
     real(dp), allocatable :: tau_mesh(:), tau_wgs(:), iw_mesh(:), iw_wgs(:)
     real(dp), allocatable :: cosft_wt(:,:), cosft_tw(:,:), sinft_wt(:,:)
 
