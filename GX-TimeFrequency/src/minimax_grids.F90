@@ -213,7 +213,7 @@ contains
        mat(i_point, i_point) = mat(i_point, i_point) - 1.0_dp
     end do
     cosft_duality_error = maxval(abs(mat))
-    if (do_sin_w_to_t) then
+    if (do_sin_w_to_t .and. present(sinft_duality_error)) then
        if(.not.my_bare_cos_sin_weights) then
           mat(:,:) = matmul(sinft_wt, cosft_tw)
        else
