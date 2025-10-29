@@ -47,8 +47,8 @@ program test_gx_minimax_grid
                          cos_tau_to_freq_weights, cos_freq_to_tau_weights, &
                          sinft_tau_to_freq_weights, &
                          max_errors, cosft_duality_error, ierr, &
-                         sinft_tw=sinft_freq_to_tau_weights, &
-                         sinft_duality_error=sinft_duality_error)
+                         sinft_tw=sinft_freq_to_tau_weights, &             ! The sinft_tw weights are optional
+                         sinft_duality_error=sinft_duality_error)          ! This error can be computed when sinft_tw is built 
 
     ! Extract tmp_path from file_name, where file_name = tmp_path / 'inputs.dat'
     n = index(trim(file_name), 'inputs.dat')
