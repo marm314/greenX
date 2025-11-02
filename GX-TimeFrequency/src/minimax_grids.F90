@@ -55,7 +55,7 @@ contains
        cosft_wt, cosft_tw, sinft_wt, &
        max_errors, cosft_duality_error, ierr,&
        bare_cos_sin_weights, regularization, sinft_tw, &
-       sinft_duality_error)
+       sinft_duality_error, max_error_sin_wt)
 
     integer, intent(in)                               :: num_points
     real(kind=dp), intent(in)                         :: e_min, e_max
@@ -67,7 +67,8 @@ contains
          intent(out)                                  :: cosft_wt, cosft_tw, sinft_wt
     real(kind=dp), allocatable, dimension(:, :), &
          optional,intent(out)                         :: sinft_tw
-    real(kind=dp), intent(out)                        :: max_errors(4), cosft_duality_error
+    real(kind=dp), intent(out)                        :: max_errors(3), cosft_duality_error
+    real(kind=dp), intent(out), optional              :: max_error_sin_wt
     integer, intent(out)                              :: ierr
     real(kind=dp), intent(out), optional              :: sinft_duality_error
     logical, intent(in), optional                     :: bare_cos_sin_weights
@@ -171,7 +172,7 @@ contains
 
       ! get the weights for the sine transform G(iw) -> G(it)
       call get_transformation_weights(num_points, tau_points, omega_points, sinft_tw, e_min, e_max, &
-           max_errors(4), sin_w_to_sin_t, my_regularization, ierr)
+           max_error_sin_wt, sin_w_to_sin_t, my_regularization, ierr)
       if (ierr /= 0) return
 
     end if
