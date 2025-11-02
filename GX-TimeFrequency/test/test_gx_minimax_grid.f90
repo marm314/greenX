@@ -18,11 +18,8 @@ program test_gx_minimax_grid
     real(dp), allocatable :: freq_mesh(:), freq_weights(:)
     real(dp), allocatable :: cos_tau_to_freq_weights(:, :), cos_freq_to_tau_weights(:, :)
     real(dp), allocatable :: sinft_tau_to_freq_weights(:, :)
-    real(dp), allocatable :: sinft_freq_to_tau_weights(:, :)
     real(dp) :: max_errors(3)
-    real(dp) :: max_error_sin_wt
     real(dp) :: cosft_duality_error
-    real(dp) :: sinft_duality_error
     integer :: ierr
     character(300) :: file_name, dummy_char, tmp_path
 
@@ -47,10 +44,7 @@ program test_gx_minimax_grid
                          freq_mesh, freq_weights, &
                          cos_tau_to_freq_weights, cos_freq_to_tau_weights, &
                          sinft_tau_to_freq_weights, &
-                         max_errors, cosft_duality_error, ierr, &
-                         sinft_tw=sinft_freq_to_tau_weights, &             ! The sinft_tw weights are optional
-                         sinft_duality_error=sinft_duality_error, &        ! These errors can be computed when sinft_tw is built 
-                         max_error_sin_wt=max_error_sin_wt)                ! 
+                         max_errors, cosft_duality_error, ierr)
 
     ! Extract tmp_path from file_name, where file_name = tmp_path / 'inputs.dat'
     n = index(trim(file_name), 'inputs.dat')
@@ -84,7 +78,6 @@ program test_gx_minimax_grid
     ! Note, arrays are allocated in the library, and so must be explicitly
     ! deallocated by the caller
     deallocate(tau_mesh, tau_weights, freq_mesh, freq_weights, &
-               cos_tau_to_freq_weights, cos_freq_to_tau_weights, sinft_tau_to_freq_weights, &
-               sinft_freq_to_tau_weights)
+               cos_tau_to_freq_weights, cos_freq_to_tau_weights, sinft_tau_to_freq_weights)
 
 end program test_gx_minimax_grid
