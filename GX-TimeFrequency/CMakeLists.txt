@@ -69,6 +69,28 @@ target_link_libraries(GXTabulateGrids
         )
 
 # -----------------------------------------------
+# Build utility program for sine grid tabulation
+# -----------------------------------------------
+add_executable(GXTabulateGridsSine)
+
+set_target_properties(GXTabulateGridsSine
+        PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_Fortran_BIN_DIRECTORY}
+        RUNTIME_OUTPUT_NAME gx_tabulate_grids_sine.exe)
+
+target_sources(GXTabulateGridsSine
+        PRIVATE
+        utilities/gx_tabulate_minimax_sine.F90
+        src/gx_common.h
+        )
+
+target_link_libraries(GXTabulateGridsSine
+        PRIVATE
+        GXCommon
+        LibGXMiniMax
+        )
+
+# -----------------------------------------------
 # Library Installation
 # -----------------------------------------------
 # Install library
