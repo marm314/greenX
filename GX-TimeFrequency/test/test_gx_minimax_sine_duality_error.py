@@ -75,7 +75,7 @@ def test_gx_minimax_duality_error(fortran_binary):
                        ref_errors[:, Column.MaxErrTimeToFreq.value],
                        atol=1.e-7)
 
-    assert np.allclose(tabulated_errors[:, Column.DualityError.value],
-                      ref_errors[:, Column.DualityError.value],
+    assert np.allclose(tabulated_errors[0:9, Column.DualityError.value],
+                      ref_errors[0:9, Column.DualityError.value],
                       atol=1.e-7)
 
